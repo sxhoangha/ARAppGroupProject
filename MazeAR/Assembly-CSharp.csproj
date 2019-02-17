@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\IntVector2.cs" />
     <Compile Include="Assets\Scripts\Maze.cs" />
     <Compile Include="Assets\Scripts\MazeCell.cs" />
+    <Compile Include="Assets\Scripts\MazeDirection.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/kien ngo/Desktop/ARAppGroupProject/MazeAR/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
