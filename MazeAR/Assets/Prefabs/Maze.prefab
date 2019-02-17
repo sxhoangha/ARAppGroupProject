@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generationStepDelay: 0.01
-  sizeX: 20
-  sizeZ: 20
   cellPrefab: {fileID: 1095682489349211003, guid: f4a9bbe98886b0e498d28daa29c36aed,
     type: 3}
+  size:
+    x: 20
+    z: 20
