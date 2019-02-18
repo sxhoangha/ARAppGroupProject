@@ -1,8 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MazeWall : MazeCellEdge
-{
-    // This class is an abstract of MazeCellEdge
-}
+public class MazeWall : MazeCellEdge {}

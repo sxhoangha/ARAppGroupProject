@@ -1,38 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class GameManager : MonoBehaviour
-{
-    public Maze mazePrefab;
-    private Maze mazeInstance;
+public class GameManager : MonoBehaviour {
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        BeginGame();
-    }
+	public Maze mazePrefab;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RestartGame();
-        }
-    }
+	private Maze mazeInstance;
 
-    private void BeginGame()
-    {
-        // Create maze
-        mazeInstance = Instantiate(mazePrefab) as Maze;
-        StartCoroutine(mazeInstance.Generate());
-    }
+	private void Start () {
+		BeginGame();
+	}
+	
+	private void Update () {
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			RestartGame();
+		}
+	}
 
-    private void RestartGame()
-    {
-        StopAllCoroutines();
-        Destroy(mazeInstance.gameObject);
-        BeginGame();
-    }
+	private void BeginGame () {
+		mazeInstance = Instantiate(mazePrefab) as Maze;
+		StartCoroutine(mazeInstance.Generate());
+	}
+
+	private void RestartGame () {
+		StopAllCoroutines();
+		Destroy(mazeInstance.gameObject);
+		BeginGame();
+	}
 }
