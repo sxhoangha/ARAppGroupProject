@@ -47,5 +47,5 @@ MonoBehaviour:
   cellPrefab: {fileID: 1095682489349211003, guid: f4a9bbe98886b0e498d28daa29c36aed,
     type: 3}
   size:
-    x: 20
-    z: 20
+    x: 10
+    z: 10
