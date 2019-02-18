@@ -36,4 +36,18 @@ public static class MazeDirections
         // Return an IntVector2 in a random direction, (not just by incresing either x or z)
         return vectors[(int)direction];
     }
+
+    private static MazeDirection[] opposites =
+    {
+        // Opposite direction of enum MazeDirection
+        MazeDirection.South,
+        MazeDirection.West,
+        MazeDirection.North,
+        MazeDirection.East
+    };
+
+    public static MazeDirection GetOpposite (this MazeDirection direction)
+    {
+        return opposites[(int)direction];
+    }
 }

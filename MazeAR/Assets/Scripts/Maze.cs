@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Maze : MonoBehaviour
 {
+    // Delay time between 2 cells' creations
     public float generationStepDelay;
-    public MazeCell cellPrefab;
+    // Prefabs
+    public MazePassage passagePrefab; // Connector between 2 cell
+    public MazeCell cellPrefab; // A cell
+    public MazeWall wallPrefab; // Walls of a cell
+
     private MazeCell[,] cells;
     public IntVector2 size;
     public IntVector2 RandomCoordinates
@@ -20,18 +25,6 @@ public class Maze : MonoBehaviour
     {
         // Return true as long as the vector size falls within [0, 20] (20 here is the default size.x && size.z)
         return coordinate.x >= 0 && coordinate.x < size.x && coordinate.z >= 0 && coordinate.z < size.z;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public IEnumerator Generate()
@@ -83,14 +76,47 @@ public class Maze : MonoBehaviour
         // Draw a new cell based on new direction
         IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
         // If drawable, add new cell to list, it will eventually become the currentCell by next loop
-        if (ContainsCoordinates(coordinates) && GetCell(coordinates) == null)
+        if (ContainsCoordinates(coordinates))
         {
-            activeCells.Add(CreateCell(coordinates));
+            // Get neighbor of the currentCell
+            MazeCell neighbor = GetCell(coordinates);
+            if (neighbor == null)
+            {
+                // 
+                neighbor = CreateCell(coordinates);
+                CreatePassage(currentCell, neighbor, direction);
+                activeCells.Add(neighbor);
+            }
+            else
+            {
+                // 
+                CreateWall(currentCell, null, direction);
+                activeCells.RemoveAt(currentIndex);
+            }
         }
         else
         {
             // if new cell bump to an existing cell, remove it
             activeCells.RemoveAt(currentIndex);
+        }
+    }
+
+    private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        MazePassage passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(cell, otherCell, direction);
+        passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(otherCell, cell, direction.GetOpposite());
+    }
+
+    private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        wall.Initialize(cell, otherCell, direction);
+        if (otherCell != null)
+        {
+            wall = Instantiate(wallPrefab) as MazeWall;
+            wall.Initialize(otherCell, cell, direction.GetOpposite());
         }
     }
 }
