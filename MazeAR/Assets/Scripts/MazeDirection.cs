@@ -24,6 +24,7 @@ public static class MazeDirections
 
     private static IntVector2[] vectors =
     {
+        // These present 4 possibilities when the drawing can go up/down/left/right
         new IntVector2(0,1),
         new IntVector2(1,0),
         new IntVector2(0,-1),

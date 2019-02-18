@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f03028526410464eaf89a703521f19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generationStepDelay: 0.01
+  generationStepDelay: 0.03
   cellPrefab: {fileID: 1095682489349211003, guid: f4a9bbe98886b0e498d28daa29c36aed,
     type: 3}
   size:
