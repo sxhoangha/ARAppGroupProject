@@ -58,6 +58,8 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
+71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
+71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -177,6 +179,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 85178bea8542a90a6ba957d7a7ac7f0b Assembly-CSharp.dll:.Maze
 e1c35cdce946e9da77fe80a39c261608 Unity.XR.ARFoundation.dll:UnityEngine.XR.ARFoundation.ARSessionOrigin
 828d130d622081f8753c300e6df3150e Assembly-CSharp.dll:.GameManager
+fcf81580fc5dd8c6312e3f0f83d5a7c0 Assembly-CSharp.dll:.DropdownController
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.XR.ARFoundation.dll:UnityEngine.XR.ARFoundation.ARPointCloudMeshVisualizer
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
@@ -185,4 +188,3 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 0d85f4fda1e0e70cd92c084d12f05cdc Assembly-CSharp.dll:.FocusMaze
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 2b7d93d54e3787346d69d819ba36a3ba Assembly-CSharp.dll:.MazePassage
-fcf81580fc5dd8c6312e3f0f83d5a7c0 Assembly-CSharp.dll:.DropdownController
