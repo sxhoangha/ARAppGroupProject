@@ -15,7 +15,29 @@ public class Maze : MonoBehaviour {
 
 	private MazeCell[,] cells;
 
-	public IntVector2 RandomCoordinates {
+    void Start()
+    {
+        int mazeWidth = PlayerPrefs.GetInt("MazeWidth");
+        int mazeHeight = PlayerPrefs.GetInt("MazeHeight");
+
+        // initialization when no stored values
+        if (mazeWidth == 0)
+        {
+            mazeWidth = 10;
+            PlayerPrefs.SetInt("MazeWidth", mazeWidth);
+            Debug.Log("MazeWidth Initialized: " + mazeWidth);
+        }
+        if (mazeHeight == 0)
+        {
+            mazeHeight = 10;
+            PlayerPrefs.SetInt("MazeHeight", mazeHeight);
+            Debug.Log("MazeHeight Initialized: " + mazeWidth);
+        }
+
+        size = new IntVector2(mazeWidth, mazeHeight);
+    }
+
+    public IntVector2 RandomCoordinates {
 		get {
 			return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.z));
 		}
