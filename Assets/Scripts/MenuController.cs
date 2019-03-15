@@ -45,4 +45,9 @@ public class MenuController : MonoBehaviour
         DropdownController.instance.ResetDropDown();
     }
 
+    public void ReturnToPlayPage()
+    {
+        SceneManager.LoadScene("PlayGame");
+    }
+
 }

@@ -72,6 +72,8 @@
     <Compile Include="Assets\Scripts\MazeWall.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\Scripts\PlaceOnPlane.cs" />
+    <Compile Include="Assets\Scripts\PlayerPersistence.cs" />
+    <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Reference Include="Unity.XR.FaceSubsystem">
       <HintPath>C:/Users/Teruhiko Ito/Documents/UnityProject/ARAppGroupProject/Library/ScriptAssemblies/Unity.XR.FaceSubsystem.dll</HintPath>
     </Reference>

@@ -2952,7 +2952,7 @@ GameObject:
   - component: {fileID: 1383593202}
   - component: {fileID: 1383593201}
   m_Layer: 0
-  m_Name: ResetDropdown
+  m_Name: DropdownController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
