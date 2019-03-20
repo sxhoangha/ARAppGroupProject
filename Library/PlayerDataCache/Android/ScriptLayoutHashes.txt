@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/Teruhiko Ito/Documents/UnityProject/ARAppGroupProject/Builds/MazeAR8.apk
+C:/Users/Thang/Desktop/MazeAR9.apk
 SceneListBegin?
 Assets/Scenes/Home.unity
 Assets/Scenes/Settings.unity
@@ -186,3 +186,6 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 0d85f4fda1e0e70cd92c084d12f05cdc Assembly-CSharp.dll:.FocusMaze
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 2b7d93d54e3787346d69d819ba36a3ba Assembly-CSharp.dll:.MazePassage
+99038350e66fd2b1552a3e3d5366a35a Assembly-CSharp.dll:.SettingController
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.TextSliderValChange
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.WidthSlider
