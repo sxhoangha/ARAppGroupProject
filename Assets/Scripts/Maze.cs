@@ -5,11 +5,13 @@ using System.Collections.Generic;
 public class Maze : MonoBehaviour
 {
 
-    public IntVector2 size;
+    private IntVector2 size;    // it will be set by setting scene automatically
 
     public MazeCell cellPrefab;
 
     public float generationStepDelay;
+
+    public float scale;     // level of maze scale
 
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
@@ -61,9 +63,6 @@ public class Maze : MonoBehaviour
         }
         size.x = settings.MazeWidth;
         size.z = settings.MazeHeight;
-
-        Debug.Log("MazeWidth Initialized: " + size.x);
-        Debug.Log("MazeHeight Initialized: " + size.z);
 
         // initialize cell list
         cells = new MazeCell[size.x, size.z];
@@ -123,8 +122,9 @@ public class Maze : MonoBehaviour
         cells[coordinates.x, coordinates.z] = newCell;
         newCell.coordinates = coordinates;
         newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
+        newCell.transform.localScale = new Vector3(scale, scale, scale);
         newCell.transform.parent = transform;
-        newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
+        newCell.transform.localPosition = new Vector3(scale * (coordinates.x - size.x * 0.5f + 0.5f), 0f, scale *(coordinates.z - size.z * 0.5f + 0.5f));
         return newCell;
     }
 
@@ -139,10 +139,10 @@ public class Maze : MonoBehaviour
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
         MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        wall.transform.localScale = new Vector3(scale, scale, scale);
         wall.Initialize(cell, otherCell, direction);
         if (otherCell != null)
         {
-            wall = Instantiate(wallPrefab) as MazeWall;
             wall.Initialize(otherCell, cell, direction.GetOpposite());
         }
     }
