@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 11400000, guid: 8cc5710f710a24360a566370d7049cf8, type: 3}
-  generationStepDelay: 0.01
-  scale: 1
   passagePrefab: {fileID: 11400000, guid: 4db582300649e4e399ee4a2665f9e8e6, type: 3}
   wallPrefab: {fileID: 11400000, guid: 2970089c471ef4c599835c1992954af5, type: 3}
+  playerPrefab: {fileID: 2754617546297665359, guid: e904f4e96abe37d4a870742fa6cf0b2f,
+    type: 3}
+  goalPrefab: {fileID: 2754617546297665359, guid: e904f4e96abe37d4a870742fa6cf0b2f,
+    type: 3}
+  generationStepDelay: 0.0001
+  scale: 0.1

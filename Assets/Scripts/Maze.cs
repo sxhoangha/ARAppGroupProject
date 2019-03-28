@@ -8,15 +8,40 @@ public class Maze : MonoBehaviour
     private IntVector2 size;    // it will be set by setting scene automatically
 
     public MazeCell cellPrefab;
+    public MazePassage passagePrefab;
+    public MazeWall wallPrefab;
+    public GameObject playerPrefab;   // Minseok 2019/03/28
+    public GameObject goalPrefab;   // Minseok 2019/03/28
+
+    // Minseok 2019/03/28
+    public int LoadingGague // 
+    {
+        get
+        {
+            if (cells != null)
+            {
+                int cellCount = 0;
+                foreach (var c in cells)
+                {
+                    if (c != null)
+                    {
+                        cellCount++;
+                    }
+                }
+                return (cellCount * 100 / (size.x * size.z));
+            }
+            else
+                return 0;
+        }
+    }
+
 
     public float generationStepDelay;
 
     public float scale;     // level of maze scale
 
-    public MazePassage passagePrefab;
-    public MazeWall wallPrefab;
-
     private MazeCell[,] cells;
+
 
     void Start()
     {
@@ -73,6 +98,13 @@ public class Maze : MonoBehaviour
             yield return delay;
             DoNextGenerationStep(activeCells);
         }
+
+        // set a goal at edge of the maze
+        CreateGoal();
+        yield return delay;
+        CreatePlayer();
+        yield return delay;
+
     }
 
     private void DoFirstGenerationStep(List<MazeCell> activeCells)
@@ -124,7 +156,7 @@ public class Maze : MonoBehaviour
         newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
         newCell.transform.localScale = new Vector3(scale, scale, scale);
         newCell.transform.parent = transform;
-        newCell.transform.localPosition = new Vector3(scale * (coordinates.x - size.x * 0.5f + 0.5f), 0f, scale *(coordinates.z - size.z * 0.5f + 0.5f));
+        newCell.transform.localPosition = new Vector3(scale * (coordinates.x - size.x * 0.5f + 0.5f), 0f, scale * (coordinates.z - size.z * 0.5f + 0.5f));
         return newCell;
     }
 
@@ -145,5 +177,83 @@ public class Maze : MonoBehaviour
         {
             wall.Initialize(otherCell, cell, direction.GetOpposite());
         }
+    }
+    
+    // Minseok Choi 2019/03/28
+    /// <summary>
+    /// Gnerate and place a Goal object at the maze edge randomly.
+    /// </summary>
+    /// <returns>GameObject GoalInstance</returns>
+    private GameObject CreateGoal()
+    {
+        // coordinate to place the goal
+        Vector3 coordinates = new Vector3();
+
+        MazeDirection direction = (MazeDirection)Random.Range(0, 4);
+
+        switch (direction)
+        {
+            case MazeDirection.East:
+                coordinates.x = size.x - 1;
+                coordinates.z = Random.Range(0, size.z);
+                break;
+            case MazeDirection.North:
+                coordinates.x = Random.Range(0, size.x);
+                coordinates.z = size.z - 1;
+                break;
+            case MazeDirection.South:
+                coordinates.x = Random.Range(0, size.x);
+                break;
+            default:    // West
+                coordinates.z = Random.Range(0, size.z);
+                break;
+        }
+
+        // apply scale variable to the coordinates
+        coordinates = scale * new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0, coordinates.z - size.z * 0.5f + 0.5f);
+
+        GameObject instance = Instantiate(goalPrefab);
+        instance.name = "Maze Goal";
+        instance.transform.localPosition = new Vector3(coordinates.x, coordinates.y, coordinates.z);
+        instance.transform.localScale = scale * instance.transform.localScale;
+        instance.transform.parent = transform;
+        // to pass the coordinates to CreatePlayer()
+        goalPrefab.transform.position = new Vector3(coordinates.x, coordinates.y, coordinates.z);
+        return instance;
+    }
+
+    // Minseok Choi 2019/03/28
+    /// <summary>
+    /// Gnerate and place a Player object in the maze as far from the goal as possible
+    /// </summary>
+    /// <returns>GameObject PlayerInstance</returns>
+    private GameObject CreatePlayer()
+    {
+        // coordinate to place the goal
+        Vector3 playerPosition = new Vector3();
+        Vector3 goalPosition = goalPrefab.transform.position;
+
+        // check if the goal is close to the left side or the right side in the maze
+        if (goalPosition.x < 0) // goal is at left side
+            // set player x position right side
+            playerPosition.x = scale * (size.x * 0.5f - 0.5f);
+        else
+            // set player x position left side
+            playerPosition.x = scale * (size.x * -0.5f + 0.5f);
+
+        // check if the goal is close to the north side or south side in the maze
+        if (goalPosition.z < 0) // goal is at south side
+            // set player z position north side
+            playerPosition.z = scale * (size.z * 0.5f - 0.5f);
+        else
+            // set player z position south side
+            playerPosition.z = scale * (size.z * -0.5f + 0.5f);
+
+        GameObject instance = Instantiate(playerPrefab);
+        instance.name = "Maze Player";
+        instance.transform.localPosition = new Vector3(playerPosition.x, playerPosition.y, playerPosition.z);
+        instance.transform.localScale = scale * instance.transform.localScale;
+        instance.transform.parent = transform;
+        return instance;
     }
 }
