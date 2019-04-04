@@ -45,4 +45,20 @@ public class MazeCell : MonoBehaviour {
             throw new System.InvalidOperationException("Maze cell has no uninitialized directions left.");
         }
     }
+
+    public void OnPlayerEntered()
+    {
+        for (int i = 0; i < edges.Length; i++)
+        {
+            edges[i].OnPlayerEntered();
+        }
+    }
+
+    public void OnPlayerExited()
+    {
+        for (int i = 0; i < edges.Length; i++)
+        {
+            edges[i].OnPlayerExited();
+        }
+    }
 }
