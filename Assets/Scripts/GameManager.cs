@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour {
 	private Maze mazeInstance;
 
 	private void Start () {
-		BeginGame();
+        BeginGame();
 	}
 	
 	private void Update () {
