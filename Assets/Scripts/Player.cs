@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour {
-
     private MazeCell currentCell;
 
     private MazeDirection currentDirection;

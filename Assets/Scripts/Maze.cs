@@ -221,7 +221,7 @@ public class Maze : MonoBehaviour
         coordinates = scale * new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0, coordinates.z - size.z * 0.5f + 0.5f);
 
         GameObject instance = Instantiate(goalPrefab);
-        instance.name = "Maze Goal";
+        instance.name = "goal";
         instance.transform.localPosition = new Vector3(coordinates.x, coordinates.y, coordinates.z);
         instance.transform.localScale = scale * instance.transform.localScale;
         instance.transform.parent = transform;
@@ -258,7 +258,7 @@ public class Maze : MonoBehaviour
             playerPosition.z = scale * (size.z * -0.5f + 0.5f);
 
         GameObject instance = Instantiate(playerPrefab);
-        instance.name = "Maze Player";
+        instance.name = "goal";
         instance.transform.localPosition = new Vector3(playerPosition.x, playerPosition.y, playerPosition.z);
         instance.transform.localScale = scale * instance.transform.localScale;
         instance.transform.parent = transform;
