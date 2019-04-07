@@ -56,9 +56,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 057b7e231030049f9a3f3e033926ab42, type: 3}
   - {fileID: 11400000, guid: d61d85f53c9da4244986893237736493, type: 3}
   - {fileID: 11400000, guid: f489487ab599f45b181d62c31aa46aa7, type: 3}
-  playerPrefab: {fileID: 2754617546297665359, guid: e904f4e96abe37d4a870742fa6cf0b2f,
+  playerPrefab: {fileID: 3837780448599567303, guid: e904f4e96abe37d4a870742fa6cf0b2f,
     type: 3}
-  goalPrefab: {fileID: 2754617546297665359, guid: e904f4e96abe37d4a870742fa6cf0b2f,
+  goalPrefab: {fileID: 3837780448599567303, guid: e904f4e96abe37d4a870742fa6cf0b2f,
     type: 3}
   doorPrefab: {fileID: 11400002, guid: ddd2858d08f2e45f3b4b479b51caf822, type: 3}
   doorProbability: 0.1
