@@ -64,7 +64,6 @@
     <Compile Include="Assets\Scripts\DropdownController.cs" />
     <Compile Include="Assets\Scripts\FocusMaze.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\GameOverPanelScript.cs" />
     <Compile Include="Assets\Scripts\IntVector2.cs" />
     <Compile Include="Assets\Scripts\Maze.cs" />
     <Compile Include="Assets\Scripts\MazeCell.cs" />
