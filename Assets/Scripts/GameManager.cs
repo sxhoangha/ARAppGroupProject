@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 
     public Player playerPrefab;
 
+    public GameObject panelGameOver;    // Minseok 2019/04/07
+
     private Player playerInstance;
 
     private float scale = 0.1f; //will change later so that get from Maze script
@@ -23,7 +25,17 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			RestartGame();
 		}
-	}
+
+        // check goalCount
+        int goalCount = PlayerPrefs.GetInt("GoalCount");
+        if (goalCount >= 1)
+        {
+            panelGameOver.SetActive(true);
+            PlayerPrefs.DeleteKey("GoalCount");
+            Debug.Log("Game Over!");
+        }
+    }
+
 
     //Add player
     private IEnumerator BeginGame()
