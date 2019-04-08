@@ -10,7 +10,7 @@ public class Maze : MonoBehaviour
     public MazeCell cellPrefab;
     public MazePassage passagePrefab;
     public MazeWall[] wallPrefabs;
-    public GameObject playerPrefab;   // Minseok 2019/03/28
+    // public GameObject playerPrefab;   // Minseok 2019/03/28
     public GameObject goalPrefab;   // Minseok 2019/03/28
 
     // Add door by teru
@@ -107,8 +107,8 @@ public class Maze : MonoBehaviour
         // set a goal at edge of the maze
         CreateGoal();
         yield return delay;
-        CreatePlayer();
-        yield return delay;
+        //CreatePlayer();
+        //yield return delay;
 
     }
 
@@ -230,6 +230,7 @@ public class Maze : MonoBehaviour
         return instance;
     }
 
+    /*
     // Minseok Choi 2019/03/28
     /// <summary>
     /// Gnerate and place a Player object in the maze as far from the goal as possible
@@ -264,4 +265,5 @@ public class Maze : MonoBehaviour
         instance.transform.parent = transform;
         return instance;
     }
+    */
 }
