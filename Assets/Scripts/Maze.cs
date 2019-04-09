@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 
 public class Maze : MonoBehaviour
 {
 
-    private IntVector2 size;    // it will be set by setting scene automatically
+    public IntVector2 size;    // it will be set by setting scene automatically
 
     public MazeCell cellPrefab;
     public MazePassage passagePrefab;
@@ -18,7 +19,7 @@ public class Maze : MonoBehaviour
     [Range(0f, 1f)]
     public float doorProbability;
 
-    public int numOfGoals { get; private set; }
+    public int numOfGoals;
 
     // Minseok 2019/03/28
     public int LoadingGague // 
@@ -114,6 +115,7 @@ public class Maze : MonoBehaviour
             CreateGoal();
             yield return delay;
         }
+
     }
 
     private void DoFirstGenerationStep(List<MazeCell> activeCells)

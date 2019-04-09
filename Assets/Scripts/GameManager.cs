@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Assets.Scripts;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,14 +9,18 @@ public class GameManager : MonoBehaviour
     public Maze mazePrefab;
     public Player playerPrefab;
     public GameObject panelGameOver;    // Minseok 2019/04/07
-    public Text labelElpsdTime;    // Minseok 2019/04/07
-    public Text labelRemainedGoals;    // Minseok 2019/04/09
+    public Text lblElapsedTime;    // Minseok 2019/04/07
+    public Text lblScore;    // Minseok 2019/04/09
+    public Text lblRemainedGoals;    // Minseok 2019/04/09
+    public Score score;             // Minseok 2019/04/09
 
     private Maze mazeInstance;
     private Player playerInstance;
     private float scale = 0.1f; //will change later so that get from Maze script
     private float startTime;
     private bool isRunning = false;
+    private int numOfGoals = 0;
+    private int goalCount = 0;
 
     private void Start()
     {
@@ -25,28 +30,41 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        int numOfGoals = mazeInstance.numOfGoals;
-        int goalCount = PlayerPrefs.GetInt("GoalCount");
+        int newGoalCount = PlayerPrefs.GetInt("GoalCount");
 
-        // display game status
-        if (isRunning == true)
+        if (isRunning)
         {
-            labelElpsdTime.text = "Elapsed Time: " + (int)(Time.time - startTime) + "s";
-            labelRemainedGoals.text = "Remained Goals: " + (numOfGoals - goalCount);
-        }
-        // restart game by putting space key
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RestartGame();
-        }
+            // player catch a goal
+            if (goalCount != newGoalCount)
+            {
+                score.AddScore((int)(Time.time - startTime));
+                goalCount = newGoalCount;
+            }
 
-        // check goalCount
-        if (goalCount >= numOfGoals && isRunning == true)
-        {
-            isRunning = false;
-            panelGameOver.SetActive(true);
-            PlayerPrefs.SetInt("GoalCount", 0);
-            Debug.Log("Game Over!");
+            // display game status
+            lblElapsedTime.text = "Elapsed Time: " + (int)(Time.time - startTime) + "s";
+            lblScore.text = "Score: " + score.score;
+            lblRemainedGoals.text = "Remained Goals: " + (numOfGoals - goalCount);
+
+            // restart game by putting space key
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                RestartGame();
+            }
+
+            // check game over
+            if (goalCount >= numOfGoals)
+            {
+                // stop game and display game over panel
+                isRunning = false;
+                panelGameOver.SetActive(true);
+                PlayerPrefs.SetInt("GoalCount", 0);
+                Debug.Log("Game Over!");
+
+                // save the score
+                score.SaveScore();
+                Debug.Log("New Score saved: " + score.score);
+            }
         }
     }
 
@@ -65,6 +83,11 @@ public class GameManager : MonoBehaviour
         //Camera.main.rect = new Rect(0f, 0f, 0.4f, 0.4f);
         isRunning = true;
         startTime = Time.time;
+        numOfGoals = mazeInstance.numOfGoals;
+
+        // initialize Score variable
+        score = new Score(0, numOfGoals, 0, mazeInstance.size);
+
     }
 
     //private void BeginGame () {
