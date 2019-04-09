@@ -38,11 +38,11 @@ namespace Assets.Scripts
             date = DateTime.Now.Date.ToShortDateString();
 
             // load scores
-            List<Score> Scores = LoadScore();
+            List<Score> Scores = LoadScores();
 
             // add a new list into the list and sort
             Scores.Add(this);
-            Scores.Sort(delegate (Score s1, Score s2) { return s1.score.CompareTo(s2.score); });
+            Scores.Sort(delegate (Score s1, Score s2) { return s2.score.CompareTo(s1.score); });
 
             StringBuilder sb = new StringBuilder();
 
@@ -59,7 +59,7 @@ namespace Assets.Scripts
             return score;
         }
 
-        public List<Score> LoadScore()
+        public static List<Score> LoadScores()
         {
             // load saved score
             string strScores = PlayerPrefs.GetString("Scores");
@@ -71,7 +71,7 @@ namespace Assets.Scripts
             {
                 // deserialization
                 scoreArray.Add(JsonUtility.FromJson<Score>(strScoreArray[i]));
-            }            
+            }
 
             return scoreArray;
         }
