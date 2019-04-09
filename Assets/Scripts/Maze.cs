@@ -18,6 +18,8 @@ public class Maze : MonoBehaviour
     [Range(0f, 1f)]
     public float doorProbability;
 
+    public int numOfGoals { get; private set; }
+
     // Minseok 2019/03/28
     public int LoadingGague // 
     {
@@ -104,12 +106,14 @@ public class Maze : MonoBehaviour
             DoNextGenerationStep(activeCells);
         }
 
+        numOfGoals = (size.x * size.z) / 25;
+        PlayerPrefs.SetInt("GoalCount", 0);
         // set a goal at edge of the maze
-        CreateGoal();
-        yield return delay;
-        //CreatePlayer();
-        //yield return delay;
-
+        for (int i = 0; i < numOfGoals; i++)
+        {
+            CreateGoal();
+            yield return delay;
+        }
     }
 
     private void DoFirstGenerationStep(List<MazeCell> activeCells)
@@ -186,7 +190,7 @@ public class Maze : MonoBehaviour
             wall.Initialize(otherCell, cell, direction.GetOpposite());
         }
     }
-    
+
     // Minseok Choi 2019/03/28
     /// <summary>
     /// Gnerate and place a Goal object at the maze edge randomly.
@@ -218,7 +222,7 @@ public class Maze : MonoBehaviour
         }
 
         // apply scale variable to the coordinates
-        coordinates = scale * new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0, coordinates.z - size.z * 0.5f + 0.5f);
+        coordinates = scale * new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 1, coordinates.z - size.z * 0.5f + 0.5f);
 
         GameObject instance = Instantiate(goalPrefab);
         instance.name = "goal";

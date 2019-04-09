@@ -34,19 +34,23 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Move(currentDirection);
+            Move(MazeDirection.North);
+            Look(MazeDirection.North);
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Move(currentDirection.GetNextClockwise());
+            Move(MazeDirection.East);
+            Look(MazeDirection.East);
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Move(currentDirection.GetOpposite());
+            Move(MazeDirection.South);
+            Look(MazeDirection.South);
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            Move(currentDirection.GetNextCounterclockwise());
+            Move(MazeDirection.West);
+            Look(MazeDirection.West);
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -62,19 +66,23 @@ public class Player : MonoBehaviour {
         {
             if (EventSystem.current.currentSelectedGameObject.name == "ButtonNorth")
             {
-                Move(currentDirection);
+                Move(MazeDirection.North);
+                Look(MazeDirection.North);
             }
             else if (EventSystem.current.currentSelectedGameObject.name == "ButtonEast")
             {
-                Move(currentDirection.GetNextClockwise());
+                Move(MazeDirection.East);
+                Look(MazeDirection.East);
             }
             else if (EventSystem.current.currentSelectedGameObject.name == "ButtonSouth")
             {
-                Move(currentDirection.GetOpposite());
+                Move(MazeDirection.South);
+                Look(MazeDirection.South);
             }
             else if (EventSystem.current.currentSelectedGameObject.name == "ButtonWest")
             {
-                Move(currentDirection.GetNextCounterclockwise());
+                Move(MazeDirection.West);
+                Look(MazeDirection.West);
             }
 
             //else if (EventSystem.current.currentSelectedGameObject.name == "ButtonTurnLeft")

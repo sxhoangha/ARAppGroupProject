@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Prefabs\RPG Food &amp; Drinks Pack\Assets\Scripts\Consumer.cs" />
+    <Compile Include="Assets\Prefabs\RPG Food &amp; Drinks Pack\Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\Compass.cs" />
     <Compile Include="Assets\Scripts\DropdownController.cs" />
     <Compile Include="Assets\Scripts\FocusMaze.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Scripts\PlayerOnCollidingGoal.cs" />
     <Compile Include="Assets\Scripts\PlayerPersistence.cs" />
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
+    <Compile Include="Assets\Scripts\Rotation.cs" />
     <Compile Include="Assets\Scripts\SettingController.cs" />
     <Reference Include="Unity.XR.FaceSubsystem">
       <HintPath>C:/Users/Minseok/Desktop/ARMaze/Library/ScriptAssemblies/Unity.XR.FaceSubsystem.dll</HintPath>

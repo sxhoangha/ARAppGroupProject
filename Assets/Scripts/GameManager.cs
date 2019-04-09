@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Player playerPrefab;
     public GameObject panelGameOver;    // Minseok 2019/04/07
     public Text labelElpsdTime;    // Minseok 2019/04/07
+    public Text labelRemainedGoals;    // Minseok 2019/04/09
 
     private Maze mazeInstance;
     private Player playerInstance;
@@ -24,10 +25,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // display elapsed time
+        int numOfGoals = mazeInstance.numOfGoals;
+        int goalCount = PlayerPrefs.GetInt("GoalCount");
+
+        // display game status
         if (isRunning == true)
         {
             labelElpsdTime.text = "Elapsed Time: " + (int)(Time.time - startTime) + "s";
+            labelRemainedGoals.text = "Remained Goals: " + (numOfGoals - goalCount);
         }
         // restart game by putting space key
         if (Input.GetKeyDown(KeyCode.Space))
@@ -36,12 +41,11 @@ public class GameManager : MonoBehaviour
         }
 
         // check goalCount
-        int goalCount = PlayerPrefs.GetInt("GoalCount");
-        if (goalCount >= 1)
+        if (goalCount >= numOfGoals && isRunning == true)
         {
             isRunning = false;
             panelGameOver.SetActive(true);
-            PlayerPrefs.DeleteKey("GoalCount");
+            PlayerPrefs.SetInt("GoalCount", 0);
             Debug.Log("Game Over!");
         }
     }
