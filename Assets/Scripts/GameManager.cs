@@ -34,17 +34,19 @@ public class GameManager : MonoBehaviour
 
         if (isRunning)
         {
+            int elspdTime = (int)(Time.time - startTime);
+
             // player catch a goal
             if (goalCount != newGoalCount)
             {
-                score.AddScore((int)(Time.time - startTime));
+                score.AddScore(elspdTime);
                 goalCount = newGoalCount;
             }
 
             // display game status
-            lblElapsedTime.text = "Elapsed Time: " + (int)(Time.time - startTime) + "s";
-            lblScore.text = "Score: " + score.score;
-            lblRemainedGoals.text = "Remained Goals: " + (numOfGoals - goalCount);
+            lblElapsedTime.text = elspdTime + "s";
+            lblScore.text = score.score.ToString();
+            lblRemainedGoals.text = (numOfGoals - goalCount).ToString();
 
             // restart game by putting space key
             if (Input.GetKeyDown(KeyCode.Space))
