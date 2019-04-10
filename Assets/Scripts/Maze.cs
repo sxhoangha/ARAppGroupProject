@@ -22,7 +22,7 @@ public class Maze : MonoBehaviour
     public int numOfGoals;
 
     // Minseok 2019/03/28
-    public int LoadingGague // 
+    public int LoadingGague
     {
         get
         {
@@ -42,8 +42,7 @@ public class Maze : MonoBehaviour
                 return 0;
         }
     }
-
-
+    
     public float generationStepDelay;
 
     public float scale;     // level of maze scale
@@ -202,6 +201,11 @@ public class Maze : MonoBehaviour
     {
         // coordinate to place the goal
         Vector3 coordinates = new Vector3();
+        coordinates.x = Random.Range(0, size.x);
+        coordinates.z = Random.Range(0, size.z);
+
+        // place the goal at edges
+        /*
 
         MazeDirection direction = (MazeDirection)Random.Range(0, 4);
 
@@ -222,54 +226,16 @@ public class Maze : MonoBehaviour
                 coordinates.z = Random.Range(0, size.z);
                 break;
         }
+        */
 
         // apply scale variable to the coordinates
         coordinates = scale * new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 1, coordinates.z - size.z * 0.5f + 0.5f);
 
         GameObject instance = Instantiate(goalPrefab);
-        instance.name = "goal";
+        instance.name = "Goal";
         instance.transform.localPosition = new Vector3(coordinates.x, coordinates.y, coordinates.z);
         instance.transform.localScale = scale * instance.transform.localScale;
         instance.transform.parent = transform;
-        // to pass the coordinates to CreatePlayer()
-        goalPrefab.transform.position = new Vector3(coordinates.x, coordinates.y, coordinates.z);
         return instance;
     }
-
-    /*
-    // Minseok Choi 2019/03/28
-    /// <summary>
-    /// Gnerate and place a Player object in the maze as far from the goal as possible
-    /// </summary>
-    /// <returns>GameObject PlayerInstance</returns>
-    private GameObject CreatePlayer()
-    {
-        // coordinate to place the goal
-        Vector3 playerPosition = new Vector3();
-        Vector3 goalPosition = goalPrefab.transform.position;
-
-        // check if the goal is close to the left side or the right side in the maze
-        if (goalPosition.x < 0) // goal is at left side
-            // set player x position right side
-            playerPosition.x = scale * (size.x * 0.5f - 0.5f);
-        else
-            // set player x position left side
-            playerPosition.x = scale * (size.x * -0.5f + 0.5f);
-
-        // check if the goal is close to the north side or south side in the maze
-        if (goalPosition.z < 0) // goal is at south side
-            // set player z position north side
-            playerPosition.z = scale * (size.z * 0.5f - 0.5f);
-        else
-            // set player z position south side
-            playerPosition.z = scale * (size.z * -0.5f + 0.5f);
-
-        GameObject instance = Instantiate(playerPrefab);
-        instance.name = "goal";
-        instance.transform.localPosition = new Vector3(playerPosition.x, playerPosition.y, playerPosition.z);
-        instance.transform.localScale = scale * instance.transform.localScale;
-        instance.transform.parent = transform;
-        return instance;
-    }
-    */
 }
