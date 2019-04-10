@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip collisionSound;
     public AudioClip winningSound;
+    public GameObject panelLoadingBar;
+    public Slider loadingBar;
+    public Text lblLoadingGauge;
 
     private Maze mazeInstance;
     private Player playerInstance;
@@ -76,6 +79,12 @@ public class GameManager : MonoBehaviour
                 Debug.Log("New Score saved: " + score.score);
             }
         }
+        else
+        {
+            int progress = mazeInstance.LoadingGague;
+            loadingBar.value = progress;
+            lblLoadingGauge.text = "Loading...  " + progress + "%";
+        }
     }
 
 
@@ -93,6 +102,7 @@ public class GameManager : MonoBehaviour
         //Camera.main.clearFlags = CameraClearFlags.Depth;
         //Camera.main.rect = new Rect(0f, 0f, 0.4f, 0.4f);
         isRunning = true;
+        panelLoadingBar.SetActive(false);
         startTime = Time.time;
         numOfGoals = mazeInstance.numOfGoals;
 
