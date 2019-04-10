@@ -9,10 +9,13 @@ public class GameManager : MonoBehaviour
     public Maze mazePrefab;
     public Player playerPrefab;
     public GameObject panelGameOver;    // Minseok 2019/04/07
-    public Text lblElapsedTime;    // Minseok 2019/04/07
-    public Text lblScore;    // Minseok 2019/04/09
-    public Text lblRemainedGoals;    // Minseok 2019/04/09
+    public Text lblElapsedTime;     // Minseok 2019/04/07
+    public Text lblScore;           // Minseok 2019/04/09
+    public Text lblRemainedGoals;   // Minseok 2019/04/09
     public Score score;             // Minseok 2019/04/09
+    public AudioSource audioSource;
+    public AudioClip collisionSound;
+    public AudioClip winningSound;
 
     private Maze mazeInstance;
     private Player playerInstance;
@@ -37,8 +40,10 @@ public class GameManager : MonoBehaviour
             int elspdTime = (int)(Time.time - startTime);
 
             // player catch a goal
-            if (goalCount != newGoalCount)
+            if (goalCount < newGoalCount)
             {
+                // play collision sound effect
+                audioSource.PlayOneShot(collisionSound);
                 score.AddScore(elspdTime);
                 goalCount = newGoalCount;
             }
@@ -54,14 +59,17 @@ public class GameManager : MonoBehaviour
                 RestartGame();
             }
 
-            // check game over
+            // check if the user won the game
             if (goalCount >= numOfGoals)
             {
                 // stop game and display game over panel
                 isRunning = false;
                 panelGameOver.SetActive(true);
                 PlayerPrefs.SetInt("GoalCount", 0);
-                Debug.Log("Game Over!");
+                Debug.Log("You won!");
+
+                // play collision sound effect
+                audioSource.PlayOneShot(winningSound);
 
                 // save the score
                 score.SaveScore();
@@ -79,6 +87,7 @@ public class GameManager : MonoBehaviour
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
         playerInstance = Instantiate(playerPrefab) as Player;
+        //playerInstance = playerPrefab as Player;
         playerInstance.transform.localScale = scale * playerInstance.transform.localScale;
         playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
         //Camera.main.clearFlags = CameraClearFlags.Depth;
