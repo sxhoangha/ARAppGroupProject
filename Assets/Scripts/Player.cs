@@ -2,10 +2,24 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     private MazeCell currentCell;
 
     private MazeDirection currentDirection;
+
+    private float scale;
+
+    private float moveSpeed = 1;
+
+    private void Start()
+    {
+        scale = PlayerPrefs.GetFloat("Scale");
+        if (scale == 0)
+        {
+            scale = 0.05f;
+        }
+    }
 
     private void Look(MazeDirection direction)
     {
@@ -13,19 +27,31 @@ public class Player : MonoBehaviour {
         currentDirection = direction;
     }
 
-    public void SetLocation(MazeCell cell) {
+    public void SetLocation(MazeCell cell)
+    {
         if (currentCell != null)
         {
             currentCell.OnPlayerExited();
         }
         currentCell = cell;
-        transform.localPosition = cell.transform.localPosition;
+        Vector3 localPosition = cell.transform.localPosition;
+        transform.localPosition = new Vector3(localPosition.x, scale * 0.3f, localPosition.z);
         currentCell.OnPlayerEntered();
     }
 
-    public void Move(MazeDirection direction) {
+    public void Move(MazeDirection direction)
+    {
         MazeCellEdge edge = currentCell.GetEdge(direction);
-        if (edge is MazePassage) {
+        if (edge is MazePassage)
+        {
+            SetLocation(edge.otherCell);
+        }
+    }
+    public void MoveMove(MazeDirection direction)
+    {
+        MazeCellEdge edge = currentCell.GetEdge(direction);
+        if (edge is MazePassage)
+        {
             SetLocation(edge.otherCell);
         }
     }

@@ -1548,17 +1548,17 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
-  - {fileID: 0}
   - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
   - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
   - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
   - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
   - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
+  - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
+  - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
+  - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
+  - {fileID: 2100000, guid: 293d06339fca5354eadccf9d390daeba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1686,7 +1686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7905696945a6a524da12c53dcc7cd5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelGameOver: {fileID: 0}
 --- !u!1 &8052469696568125388
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,9 +14,5 @@ public class PlayerOnCollidingGoal : MonoBehaviour
             int goalCount = PlayerPrefs.GetInt("GoalCount");
             PlayerPrefs.SetInt("GoalCount", ++goalCount);
         }
-        else
-        {
-            Debug.Log("No Collision");
-        }      
     }
 }
