@@ -1188,7 +1188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00003243242, y: 0.000046148012}
+  m_AnchoredPosition: {x: 0.00003243242, y: 0.000054212593}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &740831422
@@ -3191,74 +3191,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2080810087}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2111922682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2111922684}
-  - component: {fileID: 2111922683}
-  - component: {fileID: 2111922685}
-  m_Layer: 0
-  m_Name: Scripts
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2111922683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111922682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a204f52f82fc62a45a4057b4b7800648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2111922684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111922682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 390.99615, y: 186.58263, z: 10.952576}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2111922685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111922682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cae0fcacd7d8c464bb488d4784e2d893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mazePrefab: {fileID: 0}
-  playerPrefab: {fileID: 0}
-  panelGameOver: {fileID: 0}
-  lblElapsedTime: {fileID: 0}
-  lblScore: {fileID: 0}
-  lblRemainedGoals: {fileID: 0}
-  audioSource: {fileID: 0}
-  collisionSound: {fileID: 0}
-  winningSound: {fileID: 0}
-  panelLoadingBar: {fileID: 0}
-  loadingBar: {fileID: 0}
-  lblLoadingGauge: {fileID: 0}
 --- !u!1 &2135812878
 GameObject:
   m_ObjectHideFlags: 0
