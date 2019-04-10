@@ -22,7 +22,7 @@ public class Maze : MonoBehaviour
     public int numOfGoals;
 
     // Minseok 2019/03/28
-    public int LoadingGague
+    public int LoadingGauge
     {
         get
         {
@@ -42,7 +42,7 @@ public class Maze : MonoBehaviour
                 return 0;
         }
     }
-    
+
     public float generationStepDelay;
 
     public float scale;     // level of maze scale
@@ -50,17 +50,11 @@ public class Maze : MonoBehaviour
     private MazeCell[,] cells;
 
 
-    void Start()
-    {
-
-    }
+    void Start() { }
 
     public IntVector2 RandomCoordinates
     {
-        get
-        {
-            return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.z));
-        }
+        get { return new IntVector2(Random.Range(0, size.x), Random.Range(0, size.z)); }
     }
 
     public bool ContainsCoordinates(IntVector2 coordinate)
@@ -79,6 +73,7 @@ public class Maze : MonoBehaviour
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
 
         PlayerSettings settings = PlayerPersistence.LoadData();
+        PlayerPrefs.SetFloat("Scale", scale);
 
         // initialization when no stored values
         if (settings.MazeWidth == 0)

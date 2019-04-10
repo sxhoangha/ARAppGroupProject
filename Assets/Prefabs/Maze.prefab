@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1592517cf81484424a60f86dfcafc7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size:
+    x: 0
+    z: 0
   cellPrefab: {fileID: 11400000, guid: 8cc5710f710a24360a566370d7049cf8, type: 3}
   passagePrefab: {fileID: 11400000, guid: 4db582300649e4e399ee4a2665f9e8e6, type: 3}
   wallPrefabs:
@@ -60,5 +63,6 @@ MonoBehaviour:
     type: 3}
   doorPrefab: {fileID: 11400002, guid: ddd2858d08f2e45f3b4b479b51caf822, type: 3}
   doorProbability: 0.1
+  numOfGoals: 0
   generationStepDelay: 0.0001
-  scale: 0.1
+  scale: 0.07

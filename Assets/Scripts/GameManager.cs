@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            int progress = mazeInstance.LoadingGague;
+            int progress = mazeInstance.LoadingGauge;
             loadingBar.value = progress;
             lblLoadingGauge.text = "Loading...  " + progress + "%";
         }
